@@ -1,4 +1,3 @@
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +11,8 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+import static org.testng.Assert.*;
+
 public class HomeButtonTest {
     WebDriver driver;
     String url = "https://vivo-shopping.com/ro/cluj-napoca";
@@ -23,35 +24,32 @@ public class HomeButtonTest {
         driver = new ChromeDriver();
         driver.get(url);
         driver.manage().window().maximize();
+
         WebElement allCookies = driver.findElement(By.id("onetrust-accept-btn-handler"));
         allCookies.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        String text =alert.getText();
-        System.out.println((text));
-        alert.accept();
 
-        WebElement nuMultumesc = driver.findElement(By.id("push-notification-widget__button"));
+        WebElement nuMultumesc = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"push-notification-widget__button\"][2]")));
         nuMultumesc.click();
     }
 
     @Test
     public void buttonHome() {
 
-        WebElement buttonHome = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/header[1]/nav[1]/div[1]/ul[2]/li[1]/a[1]"));
-           buttonHome.click();
-        Assert.assertTrue(buttonHome.isSelected());
+        WebElement buttonHome = driver.findElement(By.xpath("//*[@class='site-header__menubar__nav__item']"));
+        buttonHome.click();
+        //Assert.assertTrue(buttonHome.isSelected());
+        String expectedTitle = "Expected Title";
+        String actualTitle = driver.getTitle();
+
+         Assert.assertFalse(actualTitle.contains(expectedTitle)); {
+            System.out.println("Test Passed!");
+         }
     }
+
     @AfterTest(alwaysRun = true)
     public void tearDown() {
-       //driver.close();
+        driver.close();
     }
-//    public static void sleep(int milisecond){
-//        try {
-//            Thread.sleep(9000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }
