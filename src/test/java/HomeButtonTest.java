@@ -39,17 +39,17 @@ public class HomeButtonTest {
 
         WebElement buttonHome = driver.findElement(By.xpath("//*[@class='site-header__menubar__nav__item']"));
         buttonHome.click();
-        //Assert.assertTrue(buttonHome.isSelected());
-        String expectedTitle = "Expected Title";
-        String actualTitle = driver.getTitle();
 
-         Assert.assertFalse(actualTitle.contains(expectedTitle)); {
-            System.out.println("Test Passed!");
-         }
+        WebElement messageHome= driver.findElement(By.xpath("/html//div[@id='hash-']//h2[@class='pagecomponent-vivocollectionslider__headline']"));
+        String messageHomeStr="SLIME & FUN în lumea VIVO!";
+        Assert.assertTrue(messageHome.isDisplayed());
+        Assert.assertEquals(messageHomeStr, messageHome.getText());
+
     }
 
     @AfterTest(alwaysRun = true)
     public void tearDown() {
+
         driver.close();
     }
 }

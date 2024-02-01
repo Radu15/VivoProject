@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
@@ -32,13 +34,23 @@ public class SearchButonTest {
     }
 
     @Test
-    public void searchButonTest() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public void SearchButonTest() {
+         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        WebElement searchButonTest = driver.findElement(By.xpath("/html//header[@id='header']//ul[@class='site-header__meta__menu']//a[@title='Caută']"));
-        searchButonTest.click();
-        WebElement searchCasutaTest = driver.findElement(By.xpath("//*[@placeholder='Caută informații aici']"));
-        searchCasutaTest.click();
+        WebElement searchTest1 = driver.findElement(By.xpath("/html//header[@id='header']//ul[@class='site-header__meta__menu']//a[@title='Caută']"));
+        searchTest1.click();
+        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 4000)
+                .perform();
+
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebElement searchTest = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@placeholder='Caută informații aici']")));
+        searchTest.click();
+        searchTest.sendKeys("Zara");
+
+        WebElement searchButtonTest2 = driver.findElement(By.xpath("/html//div[@id='hash-']//div[@class='input-field input-field--custom']/button"));
+        searchButtonTest2.click();
     }
 
 }

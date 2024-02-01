@@ -44,6 +44,6 @@ public class SchimbaLimbaTest {
     }
     @AfterTest(alwaysRun = true)
     public void tearDown() {
-        driver.close();
+        //driver.close();
     }
 }
