@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -38,5 +39,11 @@ public class ServiciiTest {
 
         WebElement cariereTest = driver.findElement(By.xpath("//*[@title='Cariere']"));
         cariereTest.click();
+
+    }
+    @AfterTest(alwaysRun = true)
+    public void tearDown() {
+
+        // driver.close();
     }
 }

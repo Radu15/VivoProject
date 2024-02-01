@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -51,6 +53,23 @@ public class SearchButonTest {
 
         WebElement searchButtonTest2 = driver.findElement(By.xpath("/html//div[@id='hash-']//div[@class='input-field input-field--custom']/button"));
         searchButtonTest2.click();
+
+        WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin1, 0, 400)
+                .perform();
+
+        WebElement zaraHome= driver.findElement(By.xpath("//h3[normalize-space()='ZARA Home']"));
+        String zaraHomeStr="ZARA HOME";
+        Assert.assertTrue(zaraHome.isDisplayed());
+        Assert.assertEquals(zaraHomeStr, zaraHome.getText());
+
+
+    }
+    @AfterTest(alwaysRun = true)
+    public void tearDown() {
+
+        // driver.close();
     }
 
 }

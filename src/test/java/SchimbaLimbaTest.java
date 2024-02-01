@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -40,7 +42,17 @@ public class SchimbaLimbaTest {
         WebElement schimbaLimbaTest2 = driver.findElement(By.xpath("//*[@class='site-header__meta__menu__item__dropdown']"));
         schimbaLimbaTest2.click();
 
-        Assert.assertTrue(schimbaLimbaTest2.isEnabled());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
+        WebElement noThanks = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='push-notification-widget__button'][2]")));
+        noThanks.click();
+        WebElement messageLanguage= driver.findElement(By.xpath("//*[@class='pagecomponent-vivocollectionslider__excerpt']"));
+        String messageLanguageStr="We invite you to VIVO! - the place where fun becomes slime-tastic.";
+        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 50)
+                .perform();
+        Assert.assertTrue(messageLanguage.isDisplayed());
+        Assert.assertEquals(messageLanguageStr, messageLanguage.getText());
     }
     @AfterTest(alwaysRun = true)
     public void tearDown() {
