@@ -2,14 +2,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 public class AllSiteVivo {
@@ -36,14 +34,30 @@ public class AllSiteVivo {
     @Test
     public void AllSiteVivo() {
 
-        WebElement allSiteVivo= driver.findElement(By.xpath("//strong[normalize-space()='VIVO!']"));
-        allSiteVivo.click();
-        WebElement allSiteVivoUp = driver.findElement(By.xpath("//div[@class='scrollToTopSideButton']//span[@class='svg-inline']//*[name()='svg']"));
-        allSiteVivoUp.click();
+        WebElement allSiteVivo1= driver.findElement(By.xpath("//strong[normalize-space()='VIVO!']"));
+        allSiteVivo1.click();
+       for (int i = 0; i < 3; i++) {
+        WebElement allSiteVivoUp = driver.findElement(By.xpath("//*[@class='scrollToTopSideButton']"));
+        allSiteVivoUp.click();}
+
+        sleep(6);
+        for (int i = 0; i < 5; i++) {
+            WebElement allSiteVivoZoom= driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M22.5,14H1')]"));
+            allSiteVivoZoom.click();
+        }
+        WebElement allSiteTest= driver.findElement(By.xpath("//*[@class='pagecomponent-vivogooglemaps__body__content__box__headline']"));
+        String allSiteTestStr="Bine ați venit la VIVO!";
+        Assert.assertTrue(allSiteTest.isDisplayed());
+        Assert.assertEquals(allSiteTestStr,allSiteTest.getText());
     }
+
+    private void sleep(int second) {
+    }
+
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
         // driver.close();
     }
+
 }
