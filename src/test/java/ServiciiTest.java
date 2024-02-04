@@ -48,6 +48,6 @@ public class ServiciiTest {
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
-        driver.close();
+        //driver.close();
     }
 }
