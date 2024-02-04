@@ -12,6 +12,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import static java.lang.Thread.sleep;
 
 public class LocatieTest {
     WebDriver driver;
@@ -50,17 +55,49 @@ public class LocatieTest {
 
         locationMap.click();
         driver.get("https://www.google.com/maps/place/VIVO!%2BCluj-Napoca/@46.7528757,23.5282533,15.5z/data%3D!4m5!3m4!1s0x47490e47689260ed:0x941b29241ee14710!8m2!3d46.7505187!4d23.5333195&gl=RO&m=0&pc=m&uxe=eomtm&cm=2&hl=ro&src=1");
-
-        WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
-        new Actions(driver)
-                .scrollFromOrigin(scrollOrigin1, 0, 400)
-                .perform();
-
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement locationMapFinish = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html//body[@id='yDmH0d']/c-wiz[@class='SSPGKf']/div/div[@class='kFwPee']//div[@class='VtwTSb']/form[2]//button/span[@class='VfPpkd-vQzf8d']")));
-        locationMapFinish.click();
-        //Assert.assertTrue(locatieTest.isSelected());
+        sleep(9);
     }
+
+    private void sleep(int second) {
+    }
+
+    public class SimulareTastatura {
+            public static void main(String[] args) {
+                try {
+                    Robot robot = new Robot();
+
+                    // Apăsă tasta "Ctrl"
+                    robot.keyPress(KeyEvent.VK_CONTROL);
+
+                    // Apăsă tasta "W"
+                    robot.keyPress(KeyEvent.VK_W);
+
+                    // Eliberare tasta "W"
+                    robot.keyRelease(KeyEvent.VK_W);
+
+                    // Eliberare tasta "Ctrl"
+                    robot.keyRelease(KeyEvent.VK_CONTROL);
+
+                } catch (AWTException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+//        driver.get("https://www.google.com/maps/place/VIVO!%2BCluj-Napoca/@46.7528757,23.5282533,15.5z/data%3D!4m5!3m4!1s0x47490e47689260ed:0x941b29241ee14710!8m2!3d46.7505187!4d23.5333195&gl=RO&m=0&pc=m&uxe=eomtm&cm=2&hl=ro&src=1");
+//
+//       sleep(5);
+//        WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
+//        new Actions(driver)
+//                .scrollFromOrigin(scrollOrigin1, 0, 400)
+//                .perform();
+//
+//       //WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(3));
+//        //WebElement locationMapFinish = wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html//body[@id='yDmH0d']/c-wiz[@class='SSPGKf']/div/div[@class='kFwPee']//div[@class='VtwTSb']/form[2]//button/span[@class='VfPpkd-vQzf8d']")));
+//
+//        WebElement locationMapFinish=driver.findElement((By.xpath("/html//body[@id='yDmH0d']/c-wiz[@class='SSPGKf']/div/div[@class='kFwPee']//div[@class='VtwTSb']/form[2]//button/span[@class='VfPpkd-vQzf8d']")));
+//        locationMapFinish.click();
+//        //Assert.assertTrue(locatieTest.isSelected());
+
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
