@@ -2,6 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -41,7 +43,21 @@ public class ServiciiTest {
         WebElement cariereTest = driver.findElement(By.xpath("//*[@title='Cariere']"));
         cariereTest.click();
         WebElement cariereSiteTest= driver.findElement(By.xpath("//*[@class='dynamicdata__header__content']"));
-        Assert.assertTrue(cariereSiteTest.isDisplayed());
+        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin, 0, 800)
+                .perform();
+
+        WebElement citesteMaiMultTest = driver.findElement(By.xpath("/html//div[@id='hash-']/div/div[@class='container']/div[2]/div[1]/div[@class='datacard']/div[2]/a[@title='Citește mai mult']"));
+        citesteMaiMultTest.click();
+        WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
+        new Actions(driver)
+                .scrollFromOrigin(scrollOrigin1, 0, 300)
+                .perform();
+        WebElement ofertaJob= driver.findElement(By.xpath("//h1[@class='pagecomponent-contentblock__headline']//h1[1]"));
+        String ofertaJobStr="Cinema City - Ofertă de job";
+        Assert.assertTrue(ofertaJob.isDisplayed());
+        Assert.assertEquals(ofertaJobStr,ofertaJob.getText());
 
 
     }

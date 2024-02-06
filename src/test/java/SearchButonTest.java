@@ -43,7 +43,7 @@ public class SearchButonTest {
         searchTest1.click();
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
         new Actions(driver)
-                .scrollFromOrigin(scrollOrigin, 0, 4000)
+                .scrollFromOrigin(scrollOrigin, 0, 400)
                 .perform();
 
         WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -69,7 +69,7 @@ public class SearchButonTest {
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
-        driver.close();
+        //driver.close();
     }
 
 }
