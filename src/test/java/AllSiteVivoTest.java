@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
-public class AllSiteVivo {
+public class AllSiteVivoTest {
     WebDriver driver;
     String url = "https://vivo-shopping.com/ro/cluj-napoca";
 
