@@ -41,7 +41,7 @@ public class HomeButtonTest {
         buttonHome.click();
 
         WebElement messageHome= driver.findElement(By.xpath("/html//div[@id='hash-']//h2[@class='pagecomponent-vivocollectionslider__headline']"));
-        String messageHomeStr="SLIME & FUN în lumea VIVO!";
+        String messageHomeStr="ÎNCEPE ANUL ÎN STILUL TĂU";
         Assert.assertTrue(messageHome.isDisplayed());
         Assert.assertEquals(messageHomeStr, messageHome.getText());
 
@@ -50,6 +50,6 @@ public class HomeButtonTest {
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
-        driver.close();
+       // driver.close();
     }
 }

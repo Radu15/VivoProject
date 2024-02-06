@@ -1,7 +1,9 @@
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
+import org.openqa.selenium.remote.http.HttpClient;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,7 +15,7 @@ import java.time.Duration;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import org.openqa.selenium.bidi.browsingcontext.BrowsingContext;
+
 
 public class LocatieTest {
     WebDriver driver;
@@ -51,33 +53,24 @@ public class LocatieTest {
         WebElement locationMap = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/footer[1]/div[2]/ul[1]/li[1]/a[1]/span[1]/span[1]/*[name()='svg'][1]")));
         locationMap.click();
 
-            sleep(5);
-
-
-      driver.get("https://consent.google.com/m?continue=https://www.google.com/maps/place/VIVO!%2BCluj-Napoca" +
-                 "/@46.7528757,23.5282533,15.5z/data%3D!4m5!3m4!1s0x47490e47689260ed:0x941b29241ee14710!8m2!3d46.7505187" +
-                 "!4d23.5333195&gl=RO&m=0&pc=m&uxe=eomtm&cm=2&hl=ro&src=1");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-        WebElement iframe = driver.findElement(By.xpath("/html//body[@id='yDmH0d']/c-wiz[@class='SSPGKf']/div/div[@class='kFwPee']//div[@class='VtwTSb']"));
-        driver.switchTo().frame(iframe);
-
-        try {
+//      driver.get("https://consent.google.com/m?continue=https://www.google.com/maps/place/VIVO!%2BCluj-Napoca/@46.7528757,23.5282533,15.5z/data%3D!4m5!3m4!1s0x47490e47689260ed:0x941b29241ee14710!8m2!3d46.7505187!4d23.5333195&gl=RO&m=0&pc=m&uxe=eomtm&cm=2&hl=ro&src=1");
+//        //driver = new ChromeDriver();
+//        //driver.get(url);
+//        driver.manage().window().maximize();
+//
+//        WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
+//        new Actions(driver)
+//                .scrollFromOrigin(scrollOrigin1, 0, 400)
+//                .perform();
            WebElement acceptButton = driver.findElement(By.id("/html[1]/body[1]/c-wiz[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[2]/div[1]/div[1]/button[1]/div[3]"));
-           acceptButton.click();} catch (Exception e) {
+           acceptButton.click();
 
-            e.printStackTrace();
-        }
 
-        driver.switchTo().defaultContent();
 
-    }
-
-    private void sleep(int second) {
     }
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
-       // driver.close();
+       //driver.close();
     }
 }

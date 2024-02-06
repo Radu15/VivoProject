@@ -45,8 +45,8 @@ public class SchimbaLimbaTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
         WebElement noThanks = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='push-notification-widget__button'][2]")));
         noThanks.click();
-        WebElement messageLanguage= driver.findElement(By.xpath("//*[@class='pagecomponent-vivocollectionslider__excerpt']"));
-        String messageLanguageStr="We invite you to VIVO! - the place where fun becomes slime-tastic.";
+        WebElement messageLanguage= driver.findElement(By.xpath("/html//div[@id='hash-']//h2[@class='pagecomponent-vivocollectionslider__headline']"));
+        String messageLanguageStr="START THE YEAR IN YOUR STYLE";
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
         new Actions(driver)
                 .scrollFromOrigin(scrollOrigin, 0, 50)
