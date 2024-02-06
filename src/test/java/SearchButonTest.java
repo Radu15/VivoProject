@@ -69,7 +69,7 @@ public class SearchButonTest {
     @AfterTest(alwaysRun = true)
     public void tearDown() {
 
-        // driver.close();
+        driver.close();
     }
 
 }
