@@ -40,8 +40,8 @@ public class HomeButtonTest {
         WebElement buttonHome = driver.findElement(By.xpath("//*[@class='site-header__menubar__nav__item']"));
         buttonHome.click();
 
-        WebElement messageHome= driver.findElement(By.xpath("/html//div[@id='hash-']//h2[@class='pagecomponent-vivocollectionslider__headline']"));
-        String messageHomeStr="ÎNCEPE ANUL ÎN STILUL TĂU";
+        WebElement messageHome= driver.findElement(By.xpath("//*[@class='pagecomponent-vivocollectionslider__headline']"));
+        String messageHomeStr="LA VIVO! TRĂIEȘTI IUBIREA DIN PLIN";
         Assert.assertTrue(messageHome.isDisplayed());
         Assert.assertEquals(messageHomeStr, messageHome.getText());
 
