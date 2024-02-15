@@ -37,7 +37,6 @@ public class SearchButonTest {
 
     @Test
     public void SearchButonTest() {
-         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         WebElement searchTest1 = driver.findElement(By.xpath("/html//header[@id='header']//ul[@class='site-header__meta__menu']//a[@title='Caută']"));
         searchTest1.click();

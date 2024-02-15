@@ -41,7 +41,7 @@ public class HomeButtonTest {
         buttonHome.click();
 
         WebElement messageHome= driver.findElement(By.xpath("//*[@class='pagecomponent-vivocollectionslider__headline']"));
-        String messageHomeStr="LA VIVO! TRĂIEȘTI IUBIREA DIN PLIN";
+        String messageHomeStr="Iubirea se sărbătorește în stilul vostru";
         Assert.assertTrue(messageHome.isDisplayed());
         Assert.assertEquals(messageHomeStr, messageHome.getText());
 

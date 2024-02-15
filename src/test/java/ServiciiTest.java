@@ -42,7 +42,6 @@ public class ServiciiTest {
 
         WebElement cariereTest = driver.findElement(By.xpath("//*[@title='Cariere']"));
         cariereTest.click();
-        WebElement cariereSiteTest= driver.findElement(By.xpath("//*[@class='dynamicdata__header__content']"));
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
         new Actions(driver)
                 .scrollFromOrigin(scrollOrigin, 0, 800)

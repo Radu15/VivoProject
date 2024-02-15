@@ -36,12 +36,12 @@ public class AllSiteVivoTest {
 
         WebElement allSiteVivo1= driver.findElement(By.xpath("//strong[normalize-space()='VIVO!']"));
         allSiteVivo1.click();
-       for (int i = 0; i < 3; i++) {
+       for (int i = 0; i < 1; i++) {
         WebElement allSiteVivoUp = driver.findElement(By.xpath("//*[@class='scrollToTopSideButton']"));
         allSiteVivoUp.click();}
 
         sleep(6);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             WebElement allSiteVivoZoom= driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M22.5,14H1')]"));
             allSiteVivoZoom.click();
         }

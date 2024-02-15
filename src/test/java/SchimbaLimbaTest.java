@@ -46,7 +46,7 @@ public class SchimbaLimbaTest {
         WebElement noThanks = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='push-notification-widget__button'][2]")));
         noThanks.click();
         WebElement messageLanguage= driver.findElement(By.xpath("//*[@class='pagecomponent-vivocollectionslider__headline']"));
-        String messageLanguageStr="LIVE LIFE TO THE FULLEST AT VIVO!: EMBRACING LOVE";
+        String messageLanguageStr="Love is celebrated in your style.";
         WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(10, 10);
         new Actions(driver)
                 .scrollFromOrigin(scrollOrigin, 0, 50)
