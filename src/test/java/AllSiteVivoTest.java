@@ -36,22 +36,20 @@ public class AllSiteVivoTest {
 
         WebElement allSiteVivo1= driver.findElement(By.xpath("//strong[normalize-space()='VIVO!']"));
         allSiteVivo1.click();
-       for (int i = 0; i < 1; i++) {
+       for (int i = 0; i < 2; i++) {
         WebElement allSiteVivoUp = driver.findElement(By.xpath("//*[@class='scrollToTopSideButton']"));
         allSiteVivoUp.click();}
 
-        sleep(6);
-        for (int i = 0; i < 2; i++) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        for (int i = 0; i < 3; i++) {
             WebElement allSiteVivoZoom= driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M22.5,14H1')]"));
             allSiteVivoZoom.click();
         }
-        WebElement allSiteTest= driver.findElement(By.xpath("//a[@title='+']//span[@class='svg-inline']//*[name()='svg']"));
+        WebElement allSiteTest= driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/h1[1]/div[1]"));
         String allSiteTestStr="Bine ați venit la VIVO!";
         Assert.assertTrue(allSiteTest.isDisplayed());
         Assert.assertEquals(allSiteTestStr,allSiteTest.getText());
-    }
-
-    private void sleep(int second) {
     }
 
     @AfterTest(alwaysRun = true)
