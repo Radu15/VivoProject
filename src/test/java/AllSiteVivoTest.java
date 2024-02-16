@@ -41,11 +41,11 @@ public class AllSiteVivoTest {
         allSiteVivoUp.click();}
 
         sleep(6);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             WebElement allSiteVivoZoom= driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M22.5,14H1')]"));
             allSiteVivoZoom.click();
         }
-        WebElement allSiteTest= driver.findElement(By.xpath("//*[@class='pagecomponent-vivogooglemaps__body__content__box__headline']"));
+        WebElement allSiteTest= driver.findElement(By.xpath("//a[@title='+']//span[@class='svg-inline']//*[name()='svg']"));
         String allSiteTestStr="Bine ați venit la VIVO!";
         Assert.assertTrue(allSiteTest.isDisplayed());
         Assert.assertEquals(allSiteTestStr,allSiteTest.getText());
