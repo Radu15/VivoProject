@@ -26,7 +26,6 @@ public class AllSiteVivoTest {
         allCookies.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
-
         WebElement nuMultumesc = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"push-notification-widget__button\"][2]")));
         nuMultumesc.click();
     }
@@ -36,13 +35,13 @@ public class AllSiteVivoTest {
 
         WebElement allSiteVivo1= driver.findElement(By.xpath("//strong[normalize-space()='VIVO!']"));
         allSiteVivo1.click();
-       for (int i = 0; i < 2; i++) {
+      for (int i = 0; i <3; i++) {
         WebElement allSiteVivoUp = driver.findElement(By.xpath("//*[@class='scrollToTopSideButton']"));
         allSiteVivoUp.click();}
 
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             WebElement allSiteVivoZoom= driver.findElement(By.xpath("//*[name()='path' and contains(@d,'M22.5,14H1')]"));
             allSiteVivoZoom.click();
         }

@@ -29,7 +29,6 @@ public class ServiciiTest {
         allCookies.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
-
         WebElement nuMultumesc = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"push-notification-widget__button\"][2]")));
         nuMultumesc.click();
     }

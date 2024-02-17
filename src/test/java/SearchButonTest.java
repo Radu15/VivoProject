@@ -29,7 +29,6 @@ public class SearchButonTest {
         allCookies.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
-
         WebElement nuMultumesc = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class=\"push-notification-widget__button\"][2]")));
         nuMultumesc.click();
 
@@ -55,7 +54,7 @@ public class SearchButonTest {
 
         WheelInput.ScrollOrigin scrollOrigin1 = WheelInput.ScrollOrigin.fromViewport(10, 10);
         new Actions(driver)
-                .scrollFromOrigin(scrollOrigin1, 0, 400)
+                .scrollFromOrigin(scrollOrigin1, 0, 200)
                 .perform();
 
         WebElement zaraHome= driver.findElement(By.xpath("//h3[normalize-space()='ZARA Home']"));
