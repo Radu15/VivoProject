@@ -19,8 +19,6 @@ public class SchimbaLimbaTest {
 
     @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(url);
         driver.manage().window().maximize();

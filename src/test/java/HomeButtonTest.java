@@ -19,8 +19,8 @@ public class HomeButtonTest {
 
     @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver",
+                //"src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get(url);
         driver.manage().window().maximize();
@@ -48,7 +48,6 @@ public class HomeButtonTest {
 
     @AfterTest(alwaysRun = true)
     public void tearDown() {
-
-       // driver.close();
+        driver.close();
     }
 }
